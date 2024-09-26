@@ -1,0 +1,160 @@
+﻿@model AdminUI.Models.MasterProductCategoryBL
+
+@{
+    ViewBag.Title = "Create";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Create</h2>
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+<div class="form-horizontal">
+    <h4>MasterProductCategoryBL</h4>
+    <hr />
+    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+    <div class="form-group">
+        @Html.LabelFor(model => model.MasterProductCategoryName, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.MasterProductCategoryName, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.MasterProductCategoryName, "", new { @class = "text-danger" })
+        </div>
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(model => model.IsActive, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            <div class="checkbox">
+                @Html.EditorFor(model => model.IsActive)
+                @Html.ValidationMessageFor(model => model.IsActive, "", new { @class = "text-danger" })
+            </div>
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.CreatedDate, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.CreatedDate, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.CreatedDate, "", new { @class = "text-danger" })
+        </div>
+    </div>
+    <div class="form-group">
+        <div class="col-md-offset-2 col-md-10">
+            <input type="submit" value="Create" class="btn btn-default" />
+        </div>
+    </div>
+</div>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>
+
+<!-- Date Validation-->
+<script type="text/javascript">
+    $(document).ready(function () {
+        $("#CreatedDate").datepicker({
+            dateFormat: 'dd-M-yy'
+        });
+    });
+
+</script>
+
+<!--Number Validation-->
+<!--<script>
+    $('#ContactNumber').bind('keyup paste', function () {
+        this.value = this.value.replace(/[^0-9]/g, '');
+    });
+</script>-->
+
+<!--Empty Field Validation-->
+<!--<script>
+    function validateCustomerCreateForm() {
+        var customerNameValue = $('#CustomerName').val();
+        var contactNumberValue = $('#ContactNumber').val();
+        var addressValue = $('#Address').val();
+        if (customerNameValue == "") {
+            alert("CustomerName must be filled out");
+            return 0;
+        }
+        if (contactNumberValue == "") {
+            alert("ContactNumber must be filled out");
+            return 0;
+        }
+        if (addressValue == "") {
+            alert("Address must be filled out");
+            return 0;
+        }
+        else {
+            return 1;
+        }
+    }
+</script>
+<script>
+    function Test() {
+        return false;
+    }
+    $(function () {
+        $("#formCustomer").submit(function (event) {
+            //event.preventDefault();
+            var result = validateCustomerCreateForm();
+            if (result == 0) {
+                return false;
+            }
+            if (result == 1) {
+                return true;
+            }
+        });
+    });
+</script>-->
+
+<!--alphabetic Validation-->
+<!--<script>
+    $('#CustomerName').keypress(function (e) {
+        var regex = new RegExp("^[a-zA-Z]+$");
+        var str = String.fromCharCode(!e.charCode ? e.which : e.charCode);
+        if (regex.test(str)) {
+            return true;
+        }
+        else {
+            e.preventDefault();
+            alert('Please Enter Alphabate');
+            return false;
+        }
+    });
+</script>-->
+<!--MobileNumber Validation
+<script>
+    jQuery(document).ready(function ($) {
+        $cf = $('#ContactNumber');
+        $cf.blur(function (e) {
+            phone = $(this).val();
+            phone = phone.replace(/[^0-9]/g, '');
+            if (phone.length != 10) {
+                alert('Phone number must be 10 digits.')
+
+            }
+        });
+    });
+</script>
+-->
+<!--Range Validation-->
+
+<!--<script>
+    $(document).ready(function () {
+        $("#CustomerName").validate({
+            rules: {
+                age: {
+                    required: true,
+                    range: [1, 10]
+                }
+            },
+            messages: {
+                age: {
+                    range: "Please enter an age between 1 and 10."
+                }
+            }
+        });
+    });
+</script>-->

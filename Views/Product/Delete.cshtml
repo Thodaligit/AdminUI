@@ -1,0 +1,113 @@
+﻿@model AdminUI.Models.ProductBL
+
+@{
+    ViewBag.Title = "Delete";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Delete</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <h4>ProductBL</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.ProductSubCategoryId)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ProductSubCategoryId)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ProductName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ProductName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ProductPrice)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ProductPrice)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ProductDescription)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ProductDescription)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Property1)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Property1)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Property2)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Property2)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Property3)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Property3)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Property4)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Property4)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Property5)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Property5)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.IsActive)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.IsActive)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CreatedDate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CreatedDate)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-default" /> |
+            @Html.ActionLink("Back to List", "Index")
+        </div>
+    }
+</div>

@@ -1,0 +1,242 @@
+﻿@model AdminUI.Models.DayBookBL
+
+@{
+    ViewBag.Title = "Create";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Create</h2>
+
+@using (Html.BeginForm("Create", "DayBook", FormMethod.Post, new { id = "formDayBook" }))
+{
+    @Html.AntiForgeryToken()
+
+<div class="form-horizontal">
+    <h4>DayBookBL</h4>
+    <hr />
+    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+    <div class="form-group">
+        @Html.LabelFor(model => model.OrderId, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.DropDownList("OrderId", null, htmlAttributes: new { @class = "form-control" })
+            @Html.ValidationMessageFor(model => model.OrderId, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.AccountName, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.AccountName, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.AccountName, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.AccountDate, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.AccountDate, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.AccountDate, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.Description, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.Description, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.Description, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.OpeningBalance, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.OpeningBalance, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.OpeningBalance, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.DueAmount, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.DueAmount, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.DueAmount, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.ImpactAmount, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.ImpactAmount, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.ImpactAmount, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.NonImpactAmount, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.NonImpactAmount, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.NonImpactAmount, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.ClosingBalance, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.ClosingBalance, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.ClosingBalance, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.IsActive, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            <div class="checkbox">
+                @Html.EditorFor(model => model.IsActive)
+                @Html.ValidationMessageFor(model => model.IsActive, "", new { @class = "text-danger" })
+            </div>
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.CreatedDate, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.CreatedDate, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.CreatedDate, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        <div class="col-md-offset-2 col-md-10">
+            <input type="submit" id="button" value="Create" class="btn btn-default" />
+        </div>
+    </div>
+</div>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>
+
+<!-- Calculation-->
+
+@*<script>
+    var NonImpactAmount = Math.round(parseFloat(parseInt() * 0.2));
+    $('#DueAmount').val(NonImpactAmount); DueAmount
+    var NonImpactAmount = Math.round(parseFloat(parseInt(DueAmount) * 0.2));
+    $('#DueAmount').val(NonImpactAmount);
+    
+
+</script>*@
+
+<!-- Date Validation-->
+<script type="text/javascript">
+    $(document).ready(function () {
+        $("#CreatedDate").datepicker({
+            dateFormat: 'dd-M-yy'
+        });
+    });
+    $(document).ready(function () {
+        $("#AccountDate").datepicker({
+            dateFormat: 'dd-M-yy'
+        });
+    });
+
+</script>
+
+<!--Number Validation-->
+<!--<script>
+    $('#ContactNumber').bind('keyup paste', function () {
+        this.value = this.value.replace(/[^0-9]/g, '');
+    });
+</script>-->
+
+<!--Empty Field Validation-->
+<!--<script>
+    function validateCustomerCreateForm() {
+        var customerNameValue = $('#CustomerName').val();
+        var contactNumberValue = $('#ContactNumber').val();
+        var addressValue = $('#Address').val();
+        if (customerNameValue == "") {
+            alert("CustomerName must be filled out");
+            return 0;
+        }
+        if (contactNumberValue == "") {
+            alert("ContactNumber must be filled out");
+            return 0;
+        }
+        if (addressValue == "") {
+            alert("Address must be filled out");
+            return 0;
+        }
+        else {
+            return 1;
+        }
+    }
+</script>
+<script>
+    function Test() {
+        return false;
+    }
+    $(function () {
+        $("#formCustomer").submit(function (event) {
+            //event.preventDefault();
+            var result = validateCustomerCreateForm();
+            if (result == 0) {
+                return false;
+            }
+            if (result == 1) {
+                return true;
+            }
+        });
+    });
+</script>-->
+
+<!--alphabetic Validation-->
+<!--<script>
+    $('#CustomerName').keypress(function (e) {
+        var regex = new RegExp("^[a-zA-Z]+$");
+        var str = String.fromCharCode(!e.charCode ? e.which : e.charCode);
+        if (regex.test(str)) {
+            return true;
+        }
+        else {
+            e.preventDefault();
+            alert('Please Enter Alphabate');
+            return false;
+        }
+    });
+</script>-->
+<!--MobileNumber Validation
+<script>
+    jQuery(document).ready(function ($) {
+        $cf = $('#ContactNumber');
+        $cf.blur(function (e) {
+            phone = $(this).val();
+            phone = phone.replace(/[^0-9]/g, '');
+            if (phone.length != 10) {
+                alert('Phone number must be 10 digits.')
+
+            }
+        });
+    });
+</script>
+-->
+<!--Range Validation-->
+
+<!--<script>
+    $(document).ready(function () {
+        $("#CustomerName").validate({
+            rules: {
+                age: {
+                    required: true,
+                    range: [1, 10]
+                }
+            },
+            messages: {
+                age: {
+                    range: "Please enter an age between 1 and 10."
+                }
+            }
+        });
+    });
+</script>-->
